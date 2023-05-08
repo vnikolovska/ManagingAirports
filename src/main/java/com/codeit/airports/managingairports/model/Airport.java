@@ -1,17 +1,19 @@
 package com.codeit.airports.managingairports.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Airport {
 
 
     @Id
-    private  String airportName;
+    private String airportCode;
+    private String airportName;
     private String countryName;
 
-    private String airportCode;
+
     private Integer numberOfAnnuallyPassengers;
 
     public Airport() {
