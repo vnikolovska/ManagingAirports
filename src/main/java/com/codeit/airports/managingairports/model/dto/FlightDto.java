@@ -6,13 +6,18 @@ import lombok.Data;
 @Data
 public class FlightDto {
 
-    private Long id;
 
     private String codeOfStartingAirport;
-    private String codeOfDepartureAirport;
+    private String codeOfDestinationAirport;
     private Integer departureTime;
 
     private Integer flightDuration;
 
+    public FlightDto(String codeOfStartingAirport, String codeOfDestinationAirport, Integer departureTime, Integer flightDuration) {
 
+        this.codeOfStartingAirport = codeOfStartingAirport;
+        this.codeOfDestinationAirport = codeOfDestinationAirport;
+        this.departureTime = departureTime;
+        this.flightDuration = flightDuration;
+    }
 }

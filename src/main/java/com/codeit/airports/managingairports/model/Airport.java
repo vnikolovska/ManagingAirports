@@ -5,15 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Airport {
+public class Airport implements Comparable<Airport> {
 
 
     @Id
     private String airportCode;
     private String airportName;
     private String countryName;
-
-
     private Integer numberOfAnnuallyPassengers;
 
     public Airport() {
@@ -56,5 +54,12 @@ public class Airport {
 
     public void setNumberOfAnnuallyPassengers(Integer numberOfAnnuallyPassengers) {
         this.numberOfAnnuallyPassengers = numberOfAnnuallyPassengers;
+    }
+
+    @Override
+    public int compareTo(Airport airport) {
+        return this.airportCode.compareTo(airport.airportCode);
+
+
     }
 }

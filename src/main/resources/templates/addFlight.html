@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Flight</title>
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <hr>
+    <h2> Save Flight </h2>
+
+    <form action="#" th:action="@{/saveFlight}" th:object="${flight}" method="POST">
+        <p th:text="${error}" class="text-danger"></p>
+        <input type="text" th:field="*{codeOfStartingAirport.airportCode}"
+               placeholder="Enter code of starting airport" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{codeOfDestinationAirport.airportCode}"
+               placeholder="Enter code of destination airport" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{departureTime}"
+               placeholder="Enter departure times in minutes" class="form-control mb-4 col-4">
+
+
+        <input type="text" th:field="*{flightDuration}"
+               placeholder="Enter flight duration in minutes" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save Flight</button>
+    </form>
+
+</div>
+
+</body>
+</html>

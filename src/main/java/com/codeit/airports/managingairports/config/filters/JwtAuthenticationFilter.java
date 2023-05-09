@@ -57,7 +57,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             e.printStackTrace();
         }
         if (creds == null) {
-//            throw new UserNotFoundException("Invalid credentials");
             return super.attemptAuthentication(request, response);
         }
         UserDetails userDetails = userDetailsService.loadUserByUsername(creds.getUsername());

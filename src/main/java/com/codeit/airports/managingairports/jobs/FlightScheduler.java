@@ -7,7 +7,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -19,11 +18,10 @@ public class FlightScheduler {
 
     @Scheduled(cron = "0 0 1 * * ?")
     public void deleteFlightsWithLongDuration() {
-        LocalDateTime now = LocalDateTime.now();
         List<Flight> flights = flightRepository.findAll();
         for (Flight flight : flights) {
-            Duration duration = Duration.ofHours(flight.getFlightDuration());
-            if (duration.toHours() > 10) {
+            Duration duration = Duration.ofMinutes(flight.getFlightDuration());
+            if (duration.toMinutes() > 600) {
                 flightRepository.delete(flight);
             }
         }

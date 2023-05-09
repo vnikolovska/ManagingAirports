@@ -1,6 +1,5 @@
 package com.codeit.airports.managingairports.web.rest;
 
-
 import com.codeit.airports.managingairports.config.filters.JwtAuthenticationFilter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RequestMapping("/api/login")
 @RestController
+@RequestMapping("/api/login")
 public class LoginRestController {
 
 
@@ -28,10 +27,7 @@ public class LoginRestController {
 
 
         Authentication auth = this.filter.attemptAuthentication(request, response);
-        if (auth != null) {
-            return ResponseEntity.ok(this.filter.generateJwt(response, auth));
-        } else
-            return ResponseEntity.badRequest().body("Bad request");
+        return ResponseEntity.ok(this.filter.generateJwt(response, auth));
 
     }
 }

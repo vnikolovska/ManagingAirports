@@ -7,8 +7,6 @@ public class AirportDto {
     String airportCode;
     String airportName;
     String countryName;
-
-
     Integer numberOfAnnuallyPassengers;
 
     public AirportDto(String airportCode, String airportName, String countryName, Integer numberOfAnnuallyPassengers) {

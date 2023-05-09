@@ -1,9 +1,6 @@
 package com.codeit.airports.managingairports.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Flight {
@@ -12,9 +9,11 @@ public class Flight {
     private Long id;
 
 
-    private String codeOfStartingAirport;
+    @ManyToOne
+    private Airport codeOfStartingAirport;
 
-    private String codeOfDestinationAirport;
+    @ManyToOne
+    private Airport codeOfDestinationAirport;
     private Integer departureTime;
 
     private Integer flightDuration;
@@ -22,26 +21,26 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(String codeOfStartingAirport, String codeOfDestinationAirport, Integer departureTime, Integer flightDuration) {
+    public Flight(Airport codeOfStartingAirport, Airport codeOfDestinationAirport, Integer departureTime, Integer flightDuration) {
         this.codeOfStartingAirport = codeOfStartingAirport;
         this.codeOfDestinationAirport = codeOfDestinationAirport;
         this.departureTime = departureTime;
         this.flightDuration = flightDuration;
     }
 
-    public String getCodeOfStartingAirport() {
+    public Airport getCodeOfStartingAirport() {
         return codeOfStartingAirport;
     }
 
-    public void setCodeOfStartingAirport(String codeOfStartingAirport) {
+    public void setCodeOfStartingAirport(Airport codeOfStartingAirport) {
         this.codeOfStartingAirport = codeOfStartingAirport;
     }
 
-    public String getCodeOfDestinationAirport() {
+    public Airport getCodeOfDestinationAirport() {
         return codeOfDestinationAirport;
     }
 
-    public void setCodeOfDestinationAirport(String codeOfDestinationAirport) {
+    public void setCodeOfDestinationAirport(Airport codeOfDestinationAirport) {
         this.codeOfDestinationAirport = codeOfDestinationAirport;
     }
 

@@ -4,13 +4,11 @@ import com.codeit.airports.managingairports.model.Flight;
 import com.codeit.airports.managingairports.model.dto.FlightDto;
 import com.codeit.airports.managingairports.model.dto.FlightListDto;
 import com.codeit.airports.managingairports.model.exceptions.InvalidFlightException;
-import com.codeit.airports.managingairports.service.Impl.FlightServiceIml;
-import com.opencsv.exceptions.CsvException;
+import com.codeit.airports.managingairports.service.Impl.FlightServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @RequestMapping("/api/flights")
@@ -18,17 +16,11 @@ import java.util.List;
 public class FlightRestController {
 
     @Autowired
-    private FlightServiceIml flightService;
+    private FlightServiceImpl flightService;
 
-
-    @GetMapping("/all")
-    public List<Flight> getFlights() throws IOException, CsvException {
-        return flightService.importFlightsCsv();
-
-    }
 
     @PostMapping("/add")
-    public ResponseEntity<Flight> addFlight(@RequestBody FlightDto flightDto) {
+    public ResponseEntity<Flight> addFlight(@RequestBody FlightDto flightDto) throws InvalidFlightException {
         return this.flightService.addFlight(flightDto)
                 .map(flight -> ResponseEntity.ok().body(flight))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
@@ -44,7 +36,7 @@ public class FlightRestController {
     }
 
     @PostMapping("/filter/{code}")
-    public FlightListDto filterFlight(@PathVariable String code) {
+    public FlightListDto findFlightsByAirportCode(@PathVariable String code) {
 
         return this.flightService.getFlightsByAirportCode(code);
 

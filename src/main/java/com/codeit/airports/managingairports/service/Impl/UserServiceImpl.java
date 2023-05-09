@@ -71,11 +71,11 @@ public class UserServiceImpl implements UserService {
                 || userRegisterDto.getPassword() == null || userRegisterDto.getPassword().isEmpty())
             throw new InvalidUsernameOrPasswordException();
         if (!userRegisterDto.getPassword().equals(userRegisterDto.getRepeatPassword()))
-            throw new InvalidUsernameOrPasswordException();
+            throw new PasswordsDoNotMatchException();
         if (this.userRepository.findByUsername(userRegisterDto.getUsername()).isPresent())
-            throw new InvalidUsernameOrPasswordException();
+            throw new UsernameAlreadyExistsException(userRegisterDto.getUsername());
 
-        User user = new User(userRegisterDto.getUsername(), passwordEncoder.encode(userRegisterDto.getPassword()), Role.ROLE_USER);
+        User user = new User(userRegisterDto.getUsername(), passwordEncoder.encode(userRegisterDto.getPassword()), userRegisterDto.getRole());
 
 
         return userRepository.save(user);
