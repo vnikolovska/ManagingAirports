@@ -10,6 +10,7 @@
     </parent>
     <groupId>com.codeIt.airports</groupId>
     <artifactId>ManagingAirports</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>ManagingAirports</name>
     <description>ManagingAirports</description>
@@ -128,7 +129,6 @@
     </dependencies>
 
     <build>
-        <finalName>blog-api-docker</finalName>
 
         <plugins>
             <plugin>
