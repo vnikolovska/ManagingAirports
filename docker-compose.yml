@@ -10,8 +10,8 @@ services:
     ports:
       - '5432:5432'
 
-  emp-management:
-    container_name: emp-management-app
+  manage-airports:
+    container_name: manage-airports-app
     build:
       context: .
       dockerfile: Dockerfile
