@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-project-service
+  namespace: devops-project
+spec:
+  selector:
+    app: devops-spring-boot-project
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

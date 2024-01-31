@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devops-project-config
+  namespace: devops-project
+data:
+  POSTGRES_URL: jdbc:postgresql://devops-project-postgres-service/postgres
+  POSTGRES_DATABASE: postgres
+  POSTGRES_USER: postgres
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: devops-project-secret
+  namespace: devops-project
+type: Opaque
+data:
+  password: cG9zdGdyZXM=
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-project-deployment
+  namespace: devops-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-spring-boot-project
+  template:
+    metadata:
+      labels:
+        app: devops-spring-boot-project
+    spec:
+      containers:
+        - name: devops-project
+          image: viktorija23/kiii-project:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: devops-project-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: devops-project-secret
+                  key: password
