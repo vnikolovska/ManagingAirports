@@ -3,8 +3,10 @@ package com.codeit.airports.managingairports.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "manageairport")
 public class Airport implements Comparable<Airport> {
 
 
