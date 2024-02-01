@@ -3,7 +3,6 @@ package com.codeit.airports.managingairports.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "manageflight")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

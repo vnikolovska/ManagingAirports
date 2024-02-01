@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "manageairport")
 public class Airport implements Comparable<Airport> {
 
 
