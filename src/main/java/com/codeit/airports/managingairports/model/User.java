@@ -16,7 +16,7 @@ import java.util.Collections;
 @Getter
 @Setter
 @Entity
-@Table(name = "manageairportuser")
+@Table(name = "airportuser")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
