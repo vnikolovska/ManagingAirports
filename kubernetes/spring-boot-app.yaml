@@ -23,7 +23,7 @@ metadata:
   name: devops-project-deployment
   namespace: devops-project
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: devops-spring-boot-project
@@ -37,11 +37,14 @@ spec:
           image: viktorija23/kiii-project:latest
           imagePullPolicy: Always
           resources:
+            requests:
+              memory: "100Mi"
+              cpu: "300m"
             limits:
-              memory: "128Mi"
+              memory: "256Mi"
               cpu: "500m"
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: devops-project-config
