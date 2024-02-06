@@ -23,7 +23,7 @@ metadata:
   name: devops-project-deployment
   namespace: devops-project
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: devops-spring-boot-project
