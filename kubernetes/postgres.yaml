@@ -52,6 +52,9 @@ spec:
       containers:
         - name: postgres
           image: postgres:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
           envFrom:
             - configMapRef:
                 name: postgres-config-map
@@ -61,9 +64,7 @@ spec:
                 secretKeyRef:
                   name: devops-project-postgres-secret
                   key: password
-          ports:
-            - containerPort: 5432
-              name: postgres-port
+
           volumeMounts:
             - name: devops-project-postgres-data
               mountPath: /var/lib/postgresql/data
