@@ -4,7 +4,7 @@ metadata:
   name: devops-project-config
   namespace: devops-project
 data:
-  POSTGRES_URL: jdbc:postgresql://devops-project-postgres-service/postgres
+  POSTGRES_URL: jdbc:postgresql://devops-project-postgres-service.svc.cluster.local
   POSTGRES_DATABASE: postgres
   POSTGRES_USER: postgres
 ---
@@ -35,7 +35,7 @@ spec:
       containers:
         - name: devops-project
           image: viktorija23/kiii-project:latest
-          imagePullPolicy: Always
+          imagePullPolicy: "Always"
           resources:
             requests:
               memory: "100Mi"
